@@ -29,12 +29,14 @@ const styles = StyleSheet.create({
         flex: 1
     },
     description: {
-        color: '#fff',
-        fontSize: 38,
+        color: '#462535',
+        fontSize: 43,
+        fontWeight: 'bold',
         marginBottom: 20
     },
     temperature: {
-        color: '#fff',
+        color: '#462535',
+        fontWeight: 'bold',
         fontSize: 50
     },
     icons: {
