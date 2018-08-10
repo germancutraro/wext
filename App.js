@@ -1,8 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { StyleSheet, Text, View, StatusBar, ActivityIndicator, TouchableOpacity } from 'react-native';
 
-
-
 import Routes from './src/routes/Routes';
 import Icon from 'react-native-vector-icons/Feather';
 
@@ -11,22 +9,24 @@ export default class App extends Component {
     return(
       <Fragment>
         <Routes />
-        
+        {/*
         <View style={styles.tabMenu}>
           <View style={styles.tabIcons}>
             <TouchableOpacity>
-            <Icon name="home" size={21} color="#F3CBB6" />
+             <Icon name="home" size={21} color="#F3CBB6" />
             </TouchableOpacity>
-            <Icon name="search" size={21} color="#F3CBB6" />
-            <Icon name="settings" size={21} color="#F3CBB6" />
+             <Icon name="search" size={21} color="#F3CBB6" />
+             <Icon name="settings" size={21} color="#F3CBB6" />
           </View>
         </View>
-
+      */}
       </Fragment>
 
     );
   }
 }
+
+App.navigationOptions = { tabBarVisible: false };
 
 const styles = StyleSheet.create({
   tabMenu: {

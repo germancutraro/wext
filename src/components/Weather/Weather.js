@@ -1,23 +1,28 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 
+import Icon from 'react-native-vector-icons/Feather';
 
-import * as icons from '../../assets/Icons/';
-
-
-
-const Weather = props =>  {
-     //const iconos = Object.keys({...icons}).map(icon => console.log(icon.substring(1, icon.length)))
+const Weather = props => {
     return (
         <View style={styles.weatherWrapper}>
+            <View style={styles.weatherIcon}>
+                <Icon name="cloud-rain" size={80} color="#462535" />
+            </View>
             <Text style={styles.description}>{props.other.description.toUpperCase()}</Text>
-            <Image source='' style={styles.icons} />
-            <Text style={styles.temperature}> {props.other.icon} {props.temperature.temp}°</Text>
-            <Text>
-                Temp_Max: {props.temperature.temp_max}
-                Temp_Min: {props.temperature.temp_min}
-                Humidity: {props.other.humidity}
-            </Text>
+
+            <View style={styles.information}>
+                <Text style={styles.temperature}> {/*props.other.icon*/} {props.temperature.temp}°</Text>
+                 <Text>   
+                <Icon name="trending-up" size={16} color="#462535" /> {props.temperature.temp_max}
+
+
+                <Icon name="trending-down" size={16} color="#462535" /> {props.temperature.temp_min}
+
+
+                <Icon name="droplet" size={16} color="#462535" /> {props.other.humidity}
+                </Text>
+            </View>
         </View>
     );
 };
@@ -30,7 +35,7 @@ const styles = StyleSheet.create({
     },
     description: {
         color: '#462535',
-        fontSize: 43,
+        fontSize: 37,
         fontWeight: 'bold',
         marginBottom: 20
     },
@@ -39,9 +44,17 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 50
     },
-    icons: {
-        width: 200,
-        height: 200
+    weatherIcon: {
+        borderColor: '#F3CBB6',
+        borderWidth: 1,
+        marginBottom: 15,
+        borderRadius: 100,
+        padding: 30
+    },
+    information: {
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        alignItems: 'center'
     }
 });
 

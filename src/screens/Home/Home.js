@@ -3,9 +3,9 @@ import { StyleSheet, Text, View, StatusBar, ActivityIndicator } from 'react-nati
 import axios from 'axios';
 
 // Components
-import Layout from '../hoc/Layout/Layout';
-import NavBar from '../components/NavBar/NavBar';
-import Weather from '../components/Weather/Weather';
+import Layout from '../../hoc/Layout/Layout';
+import NavBar from '../../components/NavBar/NavBar';
+import Weather from '../../components/Weather/Weather';
 
 export default class Home extends Component {
 
@@ -51,7 +51,7 @@ export default class Home extends Component {
     if (!Object.keys(data).length)
       return (
         <View style={[styles.container, styles.spinner]}>
-          <ActivityIndicator size={90} color="#fff" />
+          <ActivityIndicator size={90} color="#462535" />
         </View>
     )
     return (
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
   container: {
     marginTop: StatusBar.currentHeight,
     flex: 1,
-    //backgroundColor: '#1B3669'
+    backgroundColor: '#fff'
   },
   spinner: {
     flexDirection: 'row',

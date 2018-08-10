@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import PropTypes from 'prop-types';
 import {StatusBar} from 'react-native';
-console.log('statusBarHeight: ', StatusBar.currentHeight);
+import LinearGradient from 'react-native-linear-gradient';
 
 const NavBar = props => {
     return (
@@ -19,8 +19,7 @@ NavBar.propTypes = {
 
 const styles = StyleSheet.create({
     navWrapper: {
-        backgroundColor: '#1E3D75', // 3c6dcc
-        height: 50,
+        height: 55, // 50 original
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center'
@@ -28,13 +27,13 @@ const styles = StyleSheet.create({
     cityName: {
         textAlign: 'center',
         fontSize: 14,
-        color: '#fff',
+        color: '#462535',
         fontWeight: 'bold'
     },
     cityCountry: {
         textAlign: 'center',
         fontSize: 11,
-        color: '#fff'
+        color: '#462535'
     }
 })
 
