@@ -6,8 +6,10 @@ import Icon from 'react-native-vector-icons/Feather';
 
 class Search extends Component {
     test = () => {
-        this.props.setCity({name: 'Buenos Aires'})
-        console.log('xd', this.props.weather)
+        this.props.setCity({name: 'Buenos Aires'}, () => {
+            console.log('xd', this.props.weather)
+
+        })
     }
     render() {
         return(

@@ -10,7 +10,8 @@ import Weather from '../../components/Weather/Weather';
 class Home extends Component {
 
   state = {
-    data: {}
+    data: {},
+    cityName: ''
   };
 
   getWeather = async city => {
@@ -42,12 +43,29 @@ class Home extends Component {
     }  
   };
 
+  test = () =>  {
+    this.setState({cityName: this.props.weather.name}, () => {
+      this.getWeather(this.state.cityName)
+    })
+  }
   componentDidMount() {
-    console.log(this.props.weather)
-    this.getWeather(this.props.weather.name)
+    this.test()
   }
 
+
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('1', this.props.weather.name)
+    console.log('2', nextState.cityName);
+    if (this.props.weather.name !== nextState.cityName) {
+      this.test()
+      return true;
+    } 
+    return true;
+  }
+
+
   render() {
+    console.log('H STATE', this.state.cityName)
     const { data } = this.state;
     if (!Object.keys(data).length)
       return (
