@@ -2,11 +2,12 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import PropTypes from 'prop-types';
 import {StatusBar} from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
+
 
 const NavBar = props => {
     return (
         <View style={styles.navWrapper}>       
+       
             <Text style={styles.cityName}>{props.cityName.toUpperCase()}</Text>
             <Text style={styles.cityCountry}>{props.cityCountry}</Text>
         </View>

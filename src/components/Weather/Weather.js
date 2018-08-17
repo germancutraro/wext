@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
-
+import Extra from './Extra';
 import Icon from 'react-native-vector-icons/Feather';
 
 const Weather = props => {
@@ -10,19 +10,14 @@ const Weather = props => {
                 <Icon name="cloud-rain" size={80} color="#462535" />
             </View>
             <Text style={styles.description}>{props.other.description.toUpperCase()}</Text>
+            <Text style={styles.temperature}> {/*props.other.icon*/} {props.temperature.temp}°</Text>
+            <Extra 
+                temp={props.temperature.temp}
+                temp_max={props.temperature.temp_max}
+                temp_min={props.temperature.temp_min}
+                humidity={props.other.humidity}
+                />
 
-            <View style={styles.information}>
-                <Text style={styles.temperature}> {/*props.other.icon*/} {props.temperature.temp}°</Text>
-                 <Text>   
-                <Icon name="trending-up" size={16} color="#462535" /> {props.temperature.temp_max}
-
-
-                <Icon name="trending-down" size={16} color="#462535" /> {props.temperature.temp_min}
-
-
-                <Icon name="droplet" size={16} color="#462535" /> {props.other.humidity}
-                </Text>
-            </View>
         </View>
     );
 };
@@ -37,12 +32,12 @@ const styles = StyleSheet.create({
         color: '#462535',
         fontSize: 37,
         fontWeight: 'bold',
-        marginBottom: 20
+        marginBottom: 1
     },
     temperature: {
         color: '#462535',
         fontWeight: 'bold',
-        fontSize: 50
+        fontSize: 25
     },
     weatherIcon: {
         borderColor: '#F3CBB6',

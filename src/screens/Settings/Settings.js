@@ -5,7 +5,7 @@ class Settings extends Component {
     render() {
         return(
             <View>
-                <TextInput placeholder="City..." /> 
+                
             </View>
         );
     }
