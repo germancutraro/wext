@@ -1,27 +1,20 @@
 import React, { Component, Fragment } from 'react';
 import { StyleSheet, Text, View, StatusBar, ActivityIndicator, TouchableOpacity } from 'react-native';
 
+import { Provider } from 'react-redux';
+import store from './src/store';
+
 import Routes from './src/routes/Routes';
 import Icon from 'react-native-vector-icons/Feather';
 
 export default class App extends Component {
   render() {
     return(
-      <Fragment>
-        <Routes />
-        {/*
-        <View style={styles.tabMenu}>
-          <View style={styles.tabIcons}>
-            <TouchableOpacity>
-             <Icon name="home" size={21} color="#F3CBB6" />
-            </TouchableOpacity>
-             <Icon name="search" size={21} color="#F3CBB6" />
-             <Icon name="settings" size={21} color="#F3CBB6" />
-          </View>
-        </View>
-      */}
-      </Fragment>
-
+      <Provider store={store}>
+        <Fragment>
+          <Routes />
+        </Fragment>
+      </Provider>
     );
   }
 }

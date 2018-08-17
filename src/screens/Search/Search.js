@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import { View, Text, Button, TextInput, StyleSheet, StatusBar } from 'react-native';
-
+import { connect } from 'react-redux';
+import { setCity } from '../../store/actions/weather';
 import Icon from 'react-native-vector-icons/Feather';
 
 class Search extends Component {
+    test = () => {
+        this.props.setCity({name: 'Buenos Aires'})
+        console.log('xd', this.props.weather)
+    }
     render() {
         return(
             <View style={styles.container}>
@@ -15,6 +20,7 @@ class Search extends Component {
                   <Text style={{ fontSize: 30, padding: 4 }}>Wext Searcher</Text>
                   <Text style={{ fontSize: 11 }}>Find information about any city</Text>
                 </View>
+                <Button onPress={this.test} title="tst">Test</Button>
             </View>
         );
     }
@@ -44,4 +50,8 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Search;
+const mapStateToProps = state => ({
+    weather: state.weather
+});
+
+export default connect(mapStateToProps, {setCity})(Search);

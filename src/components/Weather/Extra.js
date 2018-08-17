@@ -47,7 +47,9 @@ const Extra = props => {
                 >
 
                     <TouchableWithoutFeedback onPress={() => alert('test')}>
-                        <Text style={{ color: '#fff', textAlign: 'center', fontSize: 10, fontWeight: 'bold' }}>MORE</Text>
+                        <View>
+                            <Text style={{ color: '#fff', textAlign: 'center', fontSize: 10, fontWeight: 'bold' }}>MORE</Text>
+                        </View>
                     </TouchableWithoutFeedback>
                 </LinearGradient>
             </View>

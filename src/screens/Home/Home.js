@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, StatusBar, ActivityIndicator } from 'react-native';
 import axios from 'axios';
-
+import { connect } from 'react-redux';
 // Components
 import Layout from '../../hoc/Layout/Layout';
 import NavBar from '../../components/NavBar/NavBar';
 import Weather from '../../components/Weather/Weather';
 
-export default class Home extends Component {
+class Home extends Component {
 
   state = {
     data: {}
@@ -43,7 +43,8 @@ export default class Home extends Component {
   };
 
   componentDidMount() {
-    this.getWeather('New York')
+    console.log(this.props.weather)
+    this.getWeather(this.props.weather.name)
   }
 
   render() {
@@ -78,3 +79,8 @@ const styles = StyleSheet.create({
   }
 });
 
+const mapStateToProps = state => ({
+  weather: state.weather
+});
+
+export default connect(mapStateToProps)(Home);
