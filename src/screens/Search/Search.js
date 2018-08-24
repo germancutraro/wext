@@ -17,8 +17,7 @@ class Search extends Component {
   };
 
   test = () => {
-    console.log("entonces", this.state.text);
-    this.props.setCity(this.state.text);
+    this.props.setCity({name: this.state.text});
   };
   render() {
     return (
