@@ -1,11 +1,13 @@
-import { SET_CITY } from '../actions/types';
+import { GET_INFORMATION, SET_CITY } from '../actions/types';
 
 const initialState = {
-    name: 'Toronto'
+
 };
 
 export default (state = initialState, action) => {
     switch (action.type) {
+        case GET_INFORMATION:
+            return {...state, ...action.payload }
         case SET_CITY:
             return {...state, ...action.payload};
          default:
