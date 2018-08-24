@@ -32,10 +32,10 @@ class Search extends Component {
         </View>
         <View style={styles.content}>
           <Icon name="search" color="#462535" size={100} />
-          <Text style={{ fontSize: 30, padding: 4 }}>Wext Searcher</Text>
-          <Text style={{ fontSize: 11 }}>Find information about any city</Text>
+          <Text style={{ fontSize: 30, padding: 4 }}>Wext - Buscador</Text>
+          <Text style={{ fontSize: 11 }}>Encuentra información sobre cualquier ciudad</Text>
         </View>
-        <Button onPress={this.test} title="tst">
+        <Button onPress={this.test} title="Buscar">
           Test
         </Button>
       </View>

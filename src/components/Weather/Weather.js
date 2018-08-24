@@ -27,11 +27,12 @@ const setIcon = (code) => {
             return <Icon name="wind" size={80} color="#462535"/>
     }
 };
-
+/*
 axios(`https://glosbe.com/gapi/translate?from=en&dest=es&format=json&phrase=hello&pretty=true`).then((res) => {
-    console.log(res.data.tuc.meanings);
+    console.log(res.data.tuc);
 
 })
+*/
 
 const Weather = props => {
 
@@ -41,12 +42,13 @@ const Weather = props => {
                { setIcon(props.weather[0].icon) }
             </View>
             <Text style={styles.description}>{props.weather[0].description}</Text>
-            <Text style={styles.temperature}> {/*props.other.icon*/} {props.main.temp}°</Text>
+            <Text style={styles.temperature}> {props.main.temp}°</Text>
             <Extra 
                 temp={props.main.temp}
                 temp_max={props.main.temp_max}
                 temp_min={props.main.temp_min}
                 humidity={props.main.humidity}
+                pressure={props.main.pressure}
                 />
 
         </View>

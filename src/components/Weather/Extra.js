@@ -10,25 +10,25 @@ const Extra = props => {
             <View>
                 <Text style={styles.text}>
                     <Icon name="trending-up" size={16} color="#462535" /> {" "}
-                    Max. Temperature:
+                    Temp.Máxima:
                     {" " + props.temp_max + "°C"}
                 </Text>
 
                 <Text style={styles.text}>
                     <Icon name="trending-down" size={16} color="#462535" />
                     {" "}
-                    Min. Temperature:
+                    Temp.Mínima:
                     {" " + props.temp_min + "°C"}
                 </Text>
                 <Text style={styles.text}>
                     <Icon name="droplet" size={16} color="#462535" /> {" "}
-                    Humidity:
+                    Humedad:
                     {" " + props.humidity + "°C"}
                 </Text>
                 <Text style={styles.text}>
-                    <Icon name="droplet" size={16} color="#462535" /> {" "}
-                    Humidity:
-                    {" " + props.humidity + "°C"}
+                    <Icon name="chevrons-down" size={16} color="#462535" /> {" "}
+                    Presión:
+                    {" " + props.pressure}
                 </Text>
             </View>
             <View style={{ alignItems: 'flex-end' }}>
