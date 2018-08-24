@@ -7,6 +7,7 @@ export const getInformation = (city = 'New York') => async dispatch => {
     const API = `api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
     try {
       const res = await axios("https://" + API);
+      //console.log(res.data);
       dispatch({ 
         type: GET_INFORMATION,
         payload: res.data
