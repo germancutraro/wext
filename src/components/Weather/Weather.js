@@ -49,7 +49,7 @@ const Weather = props => {
                 temp_min={props.main.temp_min}
                 humidity={props.main.humidity}
                 pressure={props.main.pressure}
-                />
+            />
 
         </View>
     );
