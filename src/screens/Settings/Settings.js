@@ -27,7 +27,6 @@ class Settings extends Component {
                     sliderRadius={50}
                     onLabel={'Noche'}
                     offLabel={'Dia'}
-                    margin={500000000000}
                     labelStyle={{ color: '#f2f2f2', fontSize: 11 }}
                     onToggle={() => this.setState({ themeActive: !this.state.themeActive })}
                     buttonOffColor="#ff886f"
@@ -51,8 +50,8 @@ class Settings extends Component {
                     offLabel={'Metric'}
                     labelStyle={{ color: '#f2f2f2', fontSize: 11 }}
                     onToggle={() => this.setState({ unitsActive: !this.state.unitsActive })}
-                    buttonOffColor="#6cdcf0"
-                    buttonOnColor="#193843"
+                    buttonOffColor="#8e9192"
+                    buttonOnColor="#414343"
                     sliderOffColor="#ffeda8"
                     sliderOnColor="#fff"
                 />   
@@ -74,8 +73,8 @@ class Settings extends Component {
                     offLabel={'Off'}
                     labelStyle={{ color: '#f2f2f2', fontSize: 11 }}
                     onToggle={() => this.setState({ locationActive: !this.state.locationActive })}
-                    buttonOffColor="#6cdcf0"
-                    buttonOnColor="#193843"
+                    buttonOffColor="#8e9192"
+                    buttonOnColor="#414343"
                     sliderOffColor="#ffeda8"
                     sliderOnColor="#fff"
                 />   
