@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 import {
   StyleSheet,
-  Text,
   View,
   StatusBar,
   ActivityIndicator
 } from "react-native";
-import axios from "axios";
 import { connect } from "react-redux";
 import { getInformation } from "../../store/actions/weather";
 // Components
@@ -25,11 +23,8 @@ class Home extends Component {
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    if (prevProps.weather.name !== this.props.weather.name) {
+    if (prevProps.weather.name !== this.props.weather.name) 
       this.props.getInformation('manual', null, this.props.weather.name);
-    }
-
-    
   }
 
   render() {

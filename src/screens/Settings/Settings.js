@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Button, StyleSheet, TouchableWithoutFeedback, StatusBar } from 'react-native';
-import CartOption from './CartOption';
-import CartButton from './CartButton';
+import CardOption from './CardOption';
+import CardButton from './CardButton';
 import FlipToggle from 'react-native-flip-toggle-button'
 
 class Settings extends Component {
@@ -13,9 +13,7 @@ class Settings extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <CartOption title="App Theme">
-                    {/*<CartButton buttonText="LIGHT" left={0} top={20} active={ true } />
-                    <CartButton buttonText="DARK" left={150} top={20} active={false} />*/}
+                <CardOption title="App Theme">
                    <View style={{ marginTop: 20, marginBottom: 50 }}>
                     <FlipToggle
                     value={this.state.themeActive}
@@ -35,8 +33,8 @@ class Settings extends Component {
                     sliderOnColor="#fff"
                 />   
                 </View>
-                </CartOption>
-                <CartOption title="Units">
+                </CardOption>
+                <CardOption title="Units">
                 <View style={{ marginTop: 20, marginBottom: 50 }}>
                     <FlipToggle
                     value={this.state.unitsActive}
@@ -56,9 +54,9 @@ class Settings extends Component {
                     sliderOnColor="#fff"
                 />   
                 </View>
-                </CartOption>
+                </CardOption>
 
-            <CartOption>
+            <CardOption>
                 <Text style={{ fontWeight: 'bold', fontSize: 16, marginTop: 10 }}>Habilitar localización</Text>
                 <View style={{ marginTop: 20, marginBottom: 50 }}>
                     <FlipToggle
@@ -79,7 +77,7 @@ class Settings extends Component {
                     sliderOnColor="#fff"
                 />   
                 </View>
-            </CartOption>
+            </CardOption>
 
             </View>
         );

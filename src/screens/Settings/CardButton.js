@@ -3,7 +3,7 @@ import React from 'react';
 import { LinearGradient } from 'expo';
 import { View, Text, StyleSheet, TouchableWithoutFeedback } from 'react-native';
 
-const CartButton = props => {
+const CardButton = props => {
     return (
         <View>
             <TouchableWithoutFeedback onPress={() => alert('test')}>
@@ -38,4 +38,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default CartButton;
+export default CardButton;

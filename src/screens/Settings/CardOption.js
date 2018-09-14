@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-const CartOption = props => {
+const CardOption = props => {
     return (
         <View style={styles.optionCartContainer}>
             <Text style={{ fontSize: 20, fontWeight: 'bold' }}>{props.title}</Text>
@@ -18,4 +18,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default CartOption;
+export default CardOption;
