@@ -17,18 +17,23 @@ import Weather from "../../components/Weather/Weather";
 class Home extends Component {
 
   componentDidMount() {
-    this.props.getInformation();
+    navigator.geolocation.getCurrentPosition(position => {
+      let { latitude } = position.coords,
+        { longitude } = position.coords;
+      this.props.getInformation('gps', {latitude, longitude});
+    });
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (prevProps.weather.name !== this.props.weather.name) {
-      this.props.getInformation(this.props.weather.name);
+      this.props.getInformation('manual', null, this.props.weather.name);
     }
+
+    
   }
 
   render() {
     const { weather } = this.props;
-
     if (!Object.keys(weather).length)
       return (
         <View style={[styles.container, styles.spinner]}>
