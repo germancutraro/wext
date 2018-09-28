@@ -55,7 +55,7 @@ class Settings extends Component {
                 />   
                 </View>
                 </CardOption>
-
+            {/*
             <CardOption>
                 <Text style={{ fontWeight: 'bold', fontSize: 16, marginTop: 10 }}>Habilitar localización</Text>
                 <View style={{ marginTop: 20, marginBottom: 50 }}>
@@ -78,7 +78,7 @@ class Settings extends Component {
                 />   
                 </View>
             </CardOption>
-
+            */}
             </View>
         );
     }

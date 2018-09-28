@@ -24,14 +24,15 @@ class Search extends Component {
       <View style={styles.container}>
         <View style={styles.searchWrapper}>
           <TextInput
-            placeholder="City..."
+            placeholder="Busca una ciudad..."
             style={styles.input}
             underlineColorAndroid={"transparent"}
             onChangeText={text => this.setState({ text })}
+            placeholderTextColor="#aaa" 
           />
         </View>
         <View style={styles.content}>
-          <Icon name="search" color="#462535" size={100} />
+          <Icon name="search" color="#603c4c" size={100} />
           <Text style={{ fontSize: 30, padding: 4 }}>Wext - Buscador</Text>
           <Text style={{ fontSize: 11 }}>Encuentra información sobre cualquier ciudad</Text>
         </View>
@@ -50,15 +51,18 @@ const styles = StyleSheet.create({
     backgroundColor: "#fafafa"
   },
   searchWrapper: {
+    borderRadius: 10,
+    margin: 15,
     height: 50,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#fff"
+    backgroundColor: "#e8e8e8"
   },
   input: {
     padding: 10,
     width: "85%",
-    fontSize: 18
+    fontSize: 22,
+    fontWeight: "300"
   },
   content: {
     flex: 1,

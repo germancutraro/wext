@@ -23,12 +23,12 @@ const Extra = props => {
                 <Text style={styles.text}>
                     <Icon name="droplet" size={16} color="#462535" /> {" "}
                     Humedad:
-                    {" " + props.humidity + "°C"}
+                    {" " + props.humidity + "%"}
                 </Text>
                 <Text style={styles.text}>
                     <Icon name="chevrons-down" size={16} color="#462535" /> {" "}
                     Presión:
-                    {" " + props.pressure}
+                    {" " + props.pressure + " mb"}
                 </Text>
             </View>
             <View style={{ alignItems: 'flex-end' }}>
@@ -36,12 +36,12 @@ const Extra = props => {
                     colors={['#ff5f6d', '#ffc371']}
                     style={{
                         position: 'absolute',
-                        right: 0,
+                        left: 50,
                         top: 0,
                         bottom: 10,
                         width: 70,
                         height: 25,
-                        borderRadius: 5,
+                        borderRadius: 30,
                         justifyContent: 'center'
                     }}
                 >
@@ -63,11 +63,11 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         width: 300,
         alignItems: 'center',
-        height: 153,
+        height: 163,
         borderRadius: 5,
         borderColor: '#eee',
         borderWidth: 1,
-        marginTop: 10,
+        marginTop: 25,
         padding: 12
     },
     text: {
