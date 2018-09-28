@@ -8,8 +8,8 @@ const Weather = props => (
         <View style={styles.weatherIcon}>
             {setIcon(props.weather[0].icon)}
         </View>
-        <Text style={styles.description}>{props.weather[0].description}</Text>
-        <Text style={styles.temperature}> {props.main.temp}°</Text>
+        <Text style={styles.description}>{props.weather[0].description[0].toUpperCase() + props.weather[0].description.substring(1, props.weather[0].description.length)}</Text>
+        <Text style={styles.temperature}> {props.main.temp}°C</Text>
         <Extra
             temp={props.main.temp}
             temp_max={props.main.temp_max}
@@ -27,21 +27,20 @@ const styles = StyleSheet.create({
         flex: 1
     },
     description: {
-        color: '#462535',
         fontSize: 37,
         fontWeight: 'bold',
-        marginBottom: 1
+        marginBottom: 1,
+        
     },
     temperature: {
-        color: '#462535',
         fontWeight: 'bold',
         fontSize: 25
     },
     weatherIcon: {
-        borderColor: '#F3CBB6',
+        borderColor: '#eee',
         borderWidth: 1,
         marginBottom: 15,
-        borderRadius: 100,
+        borderRadius: 512,
         padding: 30
     },
     information: {

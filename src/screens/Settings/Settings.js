@@ -18,10 +18,10 @@ class Settings extends Component {
                     <FlipToggle
                     value={this.state.themeActive}
                     buttonWidth={100}
-                    buttonHeight={50}
-                    buttonRadius={50}
-                    sliderWidth={20}
-                    sliderHeight={20}
+                    buttonHeight={35}
+                    buttonRadius={100}
+                    sliderWidth={25}
+                    sliderHeight={25}
                     sliderRadius={50}
                     onLabel={'Noche'}
                     offLabel={'Dia'}

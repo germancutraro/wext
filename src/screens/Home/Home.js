@@ -32,7 +32,7 @@ class Home extends Component {
     if (!Object.keys(weather).length)
       return (
         <View style={[styles.container, styles.spinner]}>
-          <ActivityIndicator size={90} color="#462535" />
+          <ActivityIndicator size={90} color="#000" />
         </View>
       );
     return (

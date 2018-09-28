@@ -30,15 +30,13 @@ class Search extends Component {
             onChangeText={text => this.setState({ text })}
             placeholderTextColor="#aaa" 
           />
+        <Icon style={styles.searchIcon} name="search" size={20} color="#aaa" onPress={this.test}/>
         </View>
         <View style={styles.content}>
-          <Icon name="search" color="#603c4c" size={100} />
-          <Text style={{ fontSize: 30, padding: 4 }}>Wext - Buscador</Text>
-          <Text style={{ fontSize: 11 }}>Encuentra información sobre cualquier ciudad</Text>
+          <Icon name="search" size={100} />
+          <Text style={{ fontSize: 30, padding: 4 }}>Buscador Wext</Text>
+          <Text style={{ fontSize: 18, fontWeight: "100" }}>Encuentra información sobre cualquier ciudad</Text>
         </View>
-        <Button onPress={this.test} title="Buscar">
-          Test
-        </Button>
       </View>
     );
   }
@@ -56,7 +54,12 @@ const styles = StyleSheet.create({
     height: 50,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#e8e8e8"
+    backgroundColor: "#e8e8e8",
+
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+
   },
   input: {
     padding: 10,

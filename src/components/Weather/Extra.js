@@ -33,7 +33,9 @@ const Extra = props => {
             </View>
             <View style={{ alignItems: 'flex-end' }}>
                 <LinearGradient
-                    colors={['#ff5f6d', '#ffc371']}
+                    colors={['#008785', '#22B58A']}
+                    start={[0,0]}
+                    end={[1,1]}
                     style={{
                         position: 'absolute',
                         left: 50,
@@ -71,7 +73,6 @@ const styles = StyleSheet.create({
         padding: 12
     },
     text: {
-        color: '#462535',
         fontWeight: 'bold',
         marginBottom: 7
     }

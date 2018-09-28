@@ -23,14 +23,12 @@ const styles = StyleSheet.create({
     },
     cityName: {
         textAlign: 'center',
-        fontSize: 14,
-        color: '#462535',
+        fontSize: 18,
         fontWeight: 'bold'
     },
     cityCountry: {
         textAlign: 'center',
-        fontSize: 11,
-        color: '#462535'
+        fontSize: 14,    
     }
 })
 
