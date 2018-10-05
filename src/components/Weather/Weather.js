@@ -11,12 +11,9 @@ const Weather = props => {
         color:"#eee",
         border:15,
         radius:100,
-        opacity:0.4,
+        opacity:0.3,
         x:0,
         y:-22,
-        style:{
-           //marginVertical:5,
-        },
     }
     return (
         <View style={styles.weatherWrapper}>
@@ -47,20 +44,18 @@ const styles = StyleSheet.create({
         flex: 1
     },
     description: {
-        color: '#462535',
+        color: '#000',
         fontSize: 37,
         fontWeight: 'bold',
         marginBottom: 1
     },
     temperature: {
-        color: '#462535',
+        color: '#000',
         fontWeight: 'bold',
         fontSize: 25
     },
     weatherIcon: {
-       /* borderColor: '#aaa',
-        borderWidth: 1,
-        */marginTop: -25,
+        marginTop: -25,
         borderRadius: 150,
         padding: 30,
         backgroundColor: "#fff"
