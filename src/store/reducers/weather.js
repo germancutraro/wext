@@ -10,6 +10,8 @@ export default (state = initialState, action) => {
             return {...state, ...action.payload }
         case SET_CITY:
             return {...state, ...action.payload};
+        case 'ERROR_CITY':
+            return {...state, ...action.payload }  
          default:
             return state;
     }

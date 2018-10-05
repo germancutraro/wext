@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, Button, Text, TouchableWithoutFeedback } from 'react-native';
 import { LinearGradient } from 'expo';
-
 import Icon from 'react-native-vector-icons/Feather';
 
 const Extra = props => {

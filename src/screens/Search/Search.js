@@ -16,9 +16,12 @@ class Search extends Component {
     text: ""
   };
 
-  test = () => {
-    this.props.setCity({name: this.state.text});
+  getCity = () => {
+    this.props.setCity({name: this.state.text})
+      .then(() => this.props.navigation.navigate('Home'))
+      .catch(err => console.log('err', err))
   };
+
   render() {
     return (
       <View style={styles.container}>
@@ -29,8 +32,9 @@ class Search extends Component {
             underlineColorAndroid={"transparent"}
             onChangeText={text => this.setState({ text })}
             placeholderTextColor="#aaa" 
+
           />
-        <Icon style={styles.searchIcon} name="search" size={20} color="#aaa" onPress={this.test}/>
+        <Icon style={styles.searchIcon} name="search" size={20} color="#aaa" onPress={this.getCity} />
         </View>
         <View style={styles.content}>
           <Icon name="search" size={100} />
@@ -55,11 +59,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#e8e8e8",
-
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-
   },
   input: {
     padding: 10,

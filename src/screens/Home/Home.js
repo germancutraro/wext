@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import {
+  Text,
   StyleSheet,
   View,
   StatusBar,
@@ -14,6 +15,10 @@ import Weather from "../../components/Weather/Weather";
 
 class Home extends Component {
 
+  state = {
+    error: false
+  };
+
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(position => {
       let { latitude } = position.coords,
@@ -24,10 +29,22 @@ class Home extends Component {
 
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (prevProps.weather.name !== this.props.weather.name) 
-      this.props.getInformation('manual', null, this.props.weather.name);
+      this.props.getInformation('manual', null, this.props.weather.name)
+        .then(msg => this.setState({error: false}))
+        .catch(err => this.setState({error: true}));
   }
 
   render() {
+
+    if (this.state.error) {
+      return (
+        <View style={ styles.notFound }>
+          <Text style={{ fontSize: 170, textAlign: 'center' }}>404!</Text>
+          <Text style={{ fontSize: 20, textAlign: 'center'}}>¡Ciudad no encontrada!</Text>
+        </View>  
+        );
+    }
+
     const { weather } = this.props;
     if (!Object.keys(weather).length)
       return (
@@ -51,6 +68,13 @@ const styles = StyleSheet.create({
     marginTop: StatusBar.currentHeight,
     flex: 1,
     backgroundColor: "#fff"
+  },
+  notFound: {
+    marginTop: StatusBar.currentHeight,
+    flex: 1,
+    backgroundColor: "#fff",
+    justifyContent: 'center', 
+    alignItems: 'center'
   },
   spinner: {
     flexDirection: "row",
