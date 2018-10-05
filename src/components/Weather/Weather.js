@@ -2,15 +2,31 @@ import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import Extra from './Extra';
 import setIcon from '../../utils/setIcon';
-
+import {BoxShadow} from 'react-native-shadow'
 
 const Weather = props => {
-
+    const shadowOpt = {
+        width:225,
+        height:215,
+        color:"#eee",
+        border:15,
+        radius:100,
+        opacity:0.4,
+        x:0,
+        y:-22,
+        style:{
+           //marginVertical:5,
+        },
+    }
     return (
         <View style={styles.weatherWrapper}>
-            <View style={styles.weatherIcon}>
-               { setIcon(props.weather[0].icon) }
-            </View>
+
+            <BoxShadow  setting={shadowOpt}>
+                <View style={styles.weatherIcon}>
+                    { setIcon(props.weather[0].icon) }
+                </View>
+            </BoxShadow>
+
             <Text style={styles.description}>{props.weather[0].description}</Text>
             <Text style={styles.temperature}> {props.main.temp}°</Text>
             <Extra 
@@ -42,11 +58,12 @@ const styles = StyleSheet.create({
         fontSize: 25
     },
     weatherIcon: {
-        borderColor: '#F3CBB6',
+       /* borderColor: '#aaa',
         borderWidth: 1,
-        marginBottom: 15,
-        borderRadius: 100,
-        padding: 30
+        */marginTop: -25,
+        borderRadius: 150,
+        padding: 30,
+        backgroundColor: "#fff"
     },
     information: {
         flexDirection: 'row',
