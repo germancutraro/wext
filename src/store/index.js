@@ -1,5 +1,4 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
-
 import weather from './reducers/weather';
 import thunk from 'redux-thunk';
 
