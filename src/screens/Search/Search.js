@@ -3,8 +3,7 @@ import {
   View,
   Text,
   TextInput,
-  StyleSheet,
-  StatusBar
+  StyleSheet
 } from "react-native";
 import { connect } from "react-redux";
 import { setCity } from "../../store/actions/weather";
@@ -47,7 +46,6 @@ class Search extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: StatusBar.currentHeight,
     flex: 1,
     backgroundColor: "#fafafa"
   },

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, StatusBar } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import CardOption from './CardOption';
 import FlipToggle from 'react-native-flip-toggle-button'
 
@@ -86,7 +86,6 @@ class Settings extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: StatusBar.currentHeight + 10,
         flex: 1,
         backgroundColor: "#fff"
     }

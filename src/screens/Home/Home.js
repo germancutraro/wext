@@ -3,7 +3,6 @@ import {
   Text,
   StyleSheet,
   View,
-  StatusBar,
   ActivityIndicator
 } from "react-native";
 import { connect } from "react-redux";
@@ -12,7 +11,7 @@ import { getInformation } from "../../store/actions/weather";
 import Layout from "../../hoc/Layout/Layout";
 import NavBar from "../../components/NavBar/NavBar";
 import Weather from "../../components/Weather/Weather";
-
+androidStatusBarColor="#fff"
 class Home extends Component {
 
   state = {
@@ -53,24 +52,25 @@ class Home extends Component {
         </View>
       );
     return (
+      
       <View style={styles.container}>
         <Layout>
           <NavBar cityName={weather.name} cityCountry={weather.sys.country} />
           <Weather {...weather} />
         </Layout>
+
       </View>
+    
     );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: StatusBar.currentHeight,
     flex: 1,
     backgroundColor: "#fff"
   },
   notFound: {
-    marginTop: StatusBar.currentHeight,
     flex: 1,
     backgroundColor: "#fff",
     justifyContent: 'center', 
