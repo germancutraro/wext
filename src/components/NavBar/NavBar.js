@@ -1,8 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import PropTypes from 'prop-types';
-import { StatusBar } from 'react-native';
-
 const NavBar = props => (
     <View style={styles.navWrapper}>
         <Text style={styles.cityName}>{props.cityName.toUpperCase()}</Text>

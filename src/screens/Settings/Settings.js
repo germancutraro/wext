@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, Button, StyleSheet, TouchableWithoutFeedback, StatusBar } from 'react-native';
+import { View, StyleSheet, StatusBar } from 'react-native';
 import CardOption from './CardOption';
-import CardButton from './CardButton';
 import FlipToggle from 'react-native-flip-toggle-button'
 
 class Settings extends Component {

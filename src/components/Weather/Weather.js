@@ -1,8 +1,8 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import Extra from './Extra';
 import setIcon from '../../utils/setIcon';
-import {BoxShadow} from 'react-native-shadow'
+import { BoxShadow } from 'react-native-shadow'
 
 const Weather = props => {
     const shadowOpt = {
