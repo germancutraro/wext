@@ -11,7 +11,9 @@ import { getInformation } from "../../store/actions/weather";
 import Layout from "../../hoc/Layout/Layout";
 import NavBar from "../../components/NavBar/NavBar";
 import Weather from "../../components/Weather/Weather";
+
 androidStatusBarColor="#fff"
+
 class Home extends Component {
 
   state = {
@@ -22,13 +24,13 @@ class Home extends Component {
     navigator.geolocation.getCurrentPosition(position => {
       let { latitude } = position.coords,
         { longitude } = position.coords;
-      this.props.getInformation('gps', {latitude, longitude});
+      this.props.getInformation('gps', {latitude, longitude}, "imperial");
     });
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (prevProps.weather.name !== this.props.weather.name) 
-      this.props.getInformation('manual', null, this.props.weather.name)
+      this.props.getInformation('manual', null, this.props.weather.name, "imperial")
         .then(msg => this.setState({error: false}))
         .catch(err => this.setState({error: true}));
   }

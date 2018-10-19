@@ -2,14 +2,22 @@ import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
 import CardOption from './CardOption';
 import FlipToggle from 'react-native-flip-toggle-button'
+import { connect } from "react-redux";
+import { getInformation } from "../../store/actions/weather";
 
 class Settings extends Component {
     state = {
         themeActive: false,
         unitsActive: false,
-        locationActive: false
     };
     render() {
+
+        if (this.state.unitsActive) {
+            this.props.getInformation('manual', null, this.props.weather.name, "imperial")
+        } else {
+            this.props.getInformation('manual', null, this.props.weather.name, "metric")
+        }
+
         return (
             <View style={styles.container}>
                 <CardOption title="App Theme">
@@ -83,12 +91,17 @@ class Settings extends Component {
     }
 }
 
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: "#fff"
     }
-});
-
-export default Settings;
+});   
+const mapStateToProps = state => ({
+    weather: state.weather
+  });
+  
+  export default connect(
+    mapStateToProps,
+    { getInformation }
+  )(Settings);
