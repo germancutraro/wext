@@ -3,11 +3,11 @@ import axios from 'axios';
 
 const API_KEY = '7c02b1090f42b77e30cac4cd89ffea05';
 
-export const getInformation = (mode, geoData, city = 'New York', units = "metric") => async dispatch => {
+export const getInformation = (mode, geoData, city = 'New York', units) => async dispatch => {
         return new Promise(async (resolve, reject) => {
             let API;
             if (mode === "gps")
-                API = `api.openweathermap.org/data/2.5/weather?lat=${geoData.latitude}&lon=${geoData.longitude}&appid=${API_KEY}&units=metric&lang=es`;
+                API = `api.openweathermap.org/data/2.5/weather?lat=${geoData.latitude}&lon=${geoData.longitude}&appid=${API_KEY}&units=${units}&lang=es`;
             else
                 API = `api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=${units}&lang=es`;
 
@@ -26,10 +26,7 @@ export const getInformation = (mode, geoData, city = 'New York', units = "metric
                 })
                 reject(err.message);
             }
-
         });
-    
-
 };
 
 export const setCityAction = cityName => ({
@@ -43,7 +40,6 @@ export const setCity = cityName => dispatch => {
             // Validate!
             dispatch(setCityAction(cityName));
             resolve();
-
         }, 400)
 
     })

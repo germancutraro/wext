@@ -17,25 +17,42 @@ androidStatusBarColor="#fff"
 class Home extends Component {
 
   state = {
-    error: false
+    error: false,
+    unit: 'metric'
   };
 
   componentDidMount() {
+
+    console.log('xdxd', this.props.unit)
+
     navigator.geolocation.getCurrentPosition(position => {
       let { latitude } = position.coords,
         { longitude } = position.coords;
-      this.props.getInformation('gps', {latitude, longitude}, "imperial");
+      this.props.getInformation('gps', {latitude, longitude}, this.props.unit)
+       .then(msg => this.setState({error: false}))
+       .catch(err => this.setState({error: true}));
     });
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (prevProps.weather.name !== this.props.weather.name) 
-      this.props.getInformation('manual', null, this.props.weather.name, "imperial")
+      this.props.getInformation('manual', null, this.props.weather.name, this.props.unit)
         .then(msg => this.setState({error: false}))
         .catch(err => this.setState({error: true}));
+
+    // si cambia this.props.unit
+    if (prevProps.unit !== this.props.unit) {
+      this.props.getInformation('manual', null, this.props.weather.name, this.props.unit)
+        .then(msg => this.setState({error: false}))
+        .catch(err => this.setState({error: true}));
+    }
+
+      
   }
 
   render() {
+ 
+   
 
     if (this.state.error) {
       return (
@@ -60,7 +77,6 @@ class Home extends Component {
           <NavBar cityName={weather.name} cityCountry={weather.sys.country} />
           <Weather {...weather} />
         </Layout>
-
       </View>
     
     );
@@ -86,7 +102,8 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = state => ({
-  weather: state.weather
+  weather: state.weather,
+  unit: state.unit
 });
 
 export default connect(
