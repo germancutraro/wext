@@ -37,7 +37,7 @@ class Home extends Component {
         .then(msg => this.setState({error: false}))
         .catch(err => this.setState({error: true}));
 
-    // si cambia this.props.unit
+    // if this.props.unit change
     if (prevProps.unit !== this.props.unit) {
       this.props.getInformation('manual', null, this.props.weather.name, this.props.unit)
         .then(msg => this.setState({error: false}))
@@ -50,13 +50,12 @@ class Home extends Component {
   render() {
 
     if (this.state.error) {
-
         return (
           <View style={ styles.notFound }>
           <Text style={{ fontSize: 170, textAlign: 'center' }}>404!</Text>
           <Text style={{ fontSize: 20, textAlign: 'center'}}>¡Ciudad no encontrada!</Text>
-        </View> )
-
+        </View> 
+      );
     }
 
     const { weather } = this.props;

@@ -6,7 +6,7 @@ import {
   StyleSheet
 } from "react-native";
 import { connect } from "react-redux";
-import { setCity } from "../../store/actions/weather";
+import { setCity, emptyWeather } from "../../store/actions/weather";
 import Icon from "react-native-vector-icons/Feather";
 
 class Search extends Component {
@@ -15,9 +15,15 @@ class Search extends Component {
   };
 
   getCity = () => {
-    this.props.setCity({name: this.state.text})
-      .then(() => this.props.navigation.navigate('Home'))
+    this.props.navigation.navigate('Home')
+    this.props.emptyWeather();
+    setTimeout(() => {
+      this.props.setCity({name: this.state.text})
+      .then(() => console.log('x') )
       .catch(err => console.log('err', err))
+
+    }, 2000);
+   
   };
 
   render() {
@@ -79,5 +85,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { setCity }
+  { setCity, emptyWeather }
 )(Search);

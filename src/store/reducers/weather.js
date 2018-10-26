@@ -12,6 +12,8 @@ export default (state = initialState, action) => {
             return {...state, ...action.payload};
         case 'ERROR_CITY':
             return {...state, ...action.payload }  
+        case 'DELETE_WEATHER':
+            return {}    
          default:
             return state;
     }

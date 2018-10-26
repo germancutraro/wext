@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const API_KEY = '7c02b1090f42b77e30cac4cd89ffea05';
 
-export const getInformation = (mode, geoData, city = 'New York', units) => async dispatch => {
+export const getInformation = (mode, geoData, city='New York', units) => async dispatch => {
         return new Promise(async (resolve, reject) => {
             let API;
             if (mode === "gps")
@@ -36,11 +36,17 @@ export const setCityAction = cityName => ({
 
 export const setCity = cityName => dispatch => {
     return new Promise((resolve, reject) => {
-        setTimeout(() => {
+        
             // Validate!
             dispatch(setCityAction(cityName));
             resolve();
-        }, 400)
+        
 
     })
 };
+
+export const emptyWeather = () => {
+    return {
+        type: 'DELETE_WEATHER'
+    }
+}
