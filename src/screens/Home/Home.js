@@ -22,9 +22,6 @@ class Home extends Component {
   };
 
   componentDidMount() {
-
-    console.log('xdxd', this.props.unit)
-
     navigator.geolocation.getCurrentPosition(position => {
       let { latitude } = position.coords,
         { longitude } = position.coords;
@@ -51,16 +48,15 @@ class Home extends Component {
   }
 
   render() {
- 
-   
 
     if (this.state.error) {
-      return (
-        <View style={ styles.notFound }>
+
+        return (
+          <View style={ styles.notFound }>
           <Text style={{ fontSize: 170, textAlign: 'center' }}>404!</Text>
           <Text style={{ fontSize: 20, textAlign: 'center'}}>¡Ciudad no encontrada!</Text>
-        </View>  
-        );
+        </View> )
+
     }
 
     const { weather } = this.props;

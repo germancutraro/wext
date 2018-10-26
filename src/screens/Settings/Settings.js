@@ -8,17 +8,11 @@ import { setUnit } from "../../store/actions/unit";
 class Settings extends Component {
     state = {
         themeActive: false,
-        unitsActive: false,
-        unit: ''
+        unitsToggle: false,
+        unit: 'imperial'
     };
     render() {
-        if (this.state.unitsActive) 
-            this.setState({unit: 'imperial'})
-        else
-            this.setState({unit: 'metric'})    
-
-
-        return (
+         return (
             <View style={styles.container}>
                 <CardOption title="App Theme">
                    <View style={{ marginTop: 20, marginBottom: 50 }}>
@@ -46,7 +40,7 @@ class Settings extends Component {
                 <CardOption title="Units">
                 <View style={{ marginTop: 20, marginBottom: 50 }}>
                     <FlipToggle
-                    value={this.state.unitsActive}
+                    value={this.state.unitsToggle}
                     buttonWidth={100}
                     buttonHeight={50}
                     buttonRadius={50}
@@ -57,7 +51,14 @@ class Settings extends Component {
                     offLabel={'Metric'}
                     labelStyle={{ color: '#f2f2f2', fontSize: 11 }}
                     onToggle={() => {
-                        this.setState({ unitsActive: !this.state.unitsActive })
+                        
+                        let unitx = this.state.unitsToggle ? 'imperial' : 'metric' ;
+                        
+                        this.setState(() => {
+                           return { unitsToggle: !this.state.unitsToggle, unit: unitx}
+                        })
+                        console.log('unitsToggle: ', this.state.unitsToggle);
+                        console.log('unit: : ', this.state.unit);
                         this.props.setUnit(this.state.unit)
                     }}
                     buttonOffColor="#8e9192"
