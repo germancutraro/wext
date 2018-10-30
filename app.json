@@ -4,6 +4,7 @@
     "androidStatusBar": {
       "barStyle": "dark-content",
       "backgroundColor": "#FFF"
-   }
+   },
+   "orientation": "portrait"
   }
 }
