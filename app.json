@@ -5,6 +5,12 @@
       "barStyle": "dark-content",
       "backgroundColor": "#FFF"
    },
+   "android": {
+     "package": "com.wext.weather",
+     "versionCode": 1,
+     "permissions": [],
+     "icon": "./icon.png"
+   },
    "orientation": "portrait"
   }
 }
