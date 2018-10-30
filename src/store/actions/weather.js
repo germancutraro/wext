@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const API_KEY = '7c02b1090f42b77e30cac4cd89ffea05';
 
-export const getInformation = (mode, geoData, city='New York', units) => async dispatch => {
+export const getInformation = (mode, geoData, city, units) => async dispatch => {
         return new Promise(async (resolve, reject) => {
             let API;
             if (mode === "gps")
@@ -22,7 +22,7 @@ export const getInformation = (mode, geoData, city='New York', units) => async d
             } catch (err) {
                 dispatch({
                     type: 'ERROR_CITY',
-                    payload: { message: 'error xd xd xd' }
+                    payload: { message: err.message }
                 })
                 reject(err.message);
             }

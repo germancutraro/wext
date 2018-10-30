@@ -17,12 +17,10 @@ class Search extends Component {
   getCity = () => {
     this.props.navigation.navigate('Home')
     this.props.emptyWeather();
-    setTimeout(() => {
       this.props.setCity({name: this.state.text})
       .then(() => console.log('x') )
       .catch(err => console.log('err', err))
 
-    }, 2000);
    
   };
 
