@@ -8,7 +8,7 @@
    "android": {
      "package": "com.wext.weather",
      "versionCode": 1,
-     "permissions": ["Permissions.LOCATION", "ACCESS_COARSE_LOCATION, ACCESS_FINE_LOCATION" ],
+     "permissions": ["Permissions.LOCATION", "ACCESS_COARSE_LOCATION", "ACCESS_FINE_LOCATION"],
      "icon": "./icon.png"
    },
    "orientation": "portrait"
