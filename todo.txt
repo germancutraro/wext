@@ -1,8 +1,2 @@
-todo:
-	Dark Theme
-	Units 
-	More
-	// Detalles:
-	Spinner
-	+ design 
-	
+Sin internet
+volver a tu "lugar"

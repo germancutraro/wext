@@ -5,19 +5,28 @@ const API_KEY = '7c02b1090f42b77e30cac4cd89ffea05';
 
 export const getInformation = (mode, geoData, city, units) => async dispatch => {
         return new Promise(async (resolve, reject) => {
+
             let API;
             if (mode === "gps")
                 API = `api.openweathermap.org/data/2.5/weather?lat=${geoData.latitude}&lon=${geoData.longitude}&appid=${API_KEY}&units=${units}&lang=es`;
-            else
+            else if (mode === "manual")
                 API = `api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=${units}&lang=es`;
-
+           else
+                 API = `api.openweathermap.org/data/2.5/forecast?q=Hurlingham&appid=${API_KEY}&units=${units}&lang=es`;     
             try {
                 const res = await axios("https://" + API);
-                //console.log(res.data);
-                dispatch({
-                    type: GET_INFORMATION,
-                    payload: res.data
-                });
+                //console.log('exteneded', res.data);
+                if (mode !== "extended")  {
+                    dispatch({
+                        type: GET_INFORMATION,
+                        payload: res.data
+                    });
+                } else {
+                    dispatch({
+                        type: "GET_EXTENDED",
+                        payload: res.data.list
+                    });
+                }
                 resolve();
             } catch (err) {
                 dispatch({

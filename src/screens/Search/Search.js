@@ -3,7 +3,8 @@ import {
   View,
   Text,
   TextInput,
-  StyleSheet
+  StyleSheet,
+  TouchableOpacity
 } from "react-native";
 import { connect } from "react-redux";
 import { setCity, emptyWeather } from "../../store/actions/weather";
@@ -11,17 +12,24 @@ import Icon from "react-native-vector-icons/Feather";
 
 class Search extends Component {
   state = {
-    text: ""
+    text: "",
+    error: ""
   };
 
   getCity = () => {
-    this.props.navigation.navigate('Home')
-    this.props.emptyWeather();
-      this.props.setCity({name: this.state.text})
-      .then(() => console.log('x') )
-      .catch(err => console.log('err', err))
 
-   
+    let { text } = this.state; 
+
+    if (text.trim() === "") {
+      this.setState({error: "Debes ingresar una ciudad!"})
+    }  else {
+      this.props.navigation.navigate('Home')
+      this.props.emptyWeather();
+      this.props.setCity({name: text})
+       .then(() => console.log('x') )
+       .catch(err => console.log('err', err))
+    }
+      
   };
 
   render() {
@@ -36,8 +44,13 @@ class Search extends Component {
             placeholderTextColor="#aaa" 
 
           />
-        <Icon style={styles.searchIcon} name="search" size={20} color="#aaa" onPress={this.getCity} />
+          <TouchableOpacity style={styles.searchButtonWrapper} onPress={this.getCity}>
+          <View>
+            <Icon style={styles.searchIcon} name="search" size={25} color="#aaa" />
+          </View>
+          </TouchableOpacity>  
         </View>
+        <Text style={{ color: "#b52424", textAlign: "center", fontSize: 17.5 }}>{this.state.error || " "}</Text>
         <View style={styles.content}>
           <Icon name="search" size={100} />
           <Text style={{ fontSize: 30, padding: 4 }}>Buscador Wext</Text>
@@ -51,7 +64,7 @@ class Search extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fafafa"
+    backgroundColor: "#fff"
   },
   searchWrapper: {
     borderRadius: 10,
@@ -72,6 +85,12 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  searchButtonWrapper: {
+    flex: 1,
+    height: "100%",
     alignItems: "center",
     justifyContent: "center"
   }

@@ -3,7 +3,8 @@ import {
   Text,
   StyleSheet,
   View,
-  ActivityIndicator
+  ActivityIndicator,
+  NetInfo
 } from "react-native";
 import { connect } from "react-redux";
 import { getInformation } from "../../store/actions/weather";
@@ -11,6 +12,8 @@ import { getInformation } from "../../store/actions/weather";
 import Layout from "../../hoc/Layout/Layout";
 import NavBar from "../../components/NavBar/NavBar";
 import Weather from "../../components/Weather/Weather";
+import OfflineNotice from '../../components/Connection/OfflineNotice';
+import LocationButtons from '../../components/LocationButtons/LocationButtons';
 
 androidStatusBarColor = "#fff"
 
@@ -19,13 +22,16 @@ class Home extends Component {
   state = {
     error: false,
     unit: 'metric',
-    data: false
+    data: false,
   };
+
 
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(position => {
       let { latitude } = position.coords,
         { longitude } = position.coords;
+      this.props.getInformation('extended', { latitude, longitude }, this.props.unit)
+
       this.props.getInformation('gps', { latitude, longitude }, this.props.unit)
         .then(msg => {
           this.setState({ error: false })
@@ -35,6 +41,8 @@ class Home extends Component {
         })
         .catch(err => this.setState({ error: true }));
     });
+
+    
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
@@ -56,6 +64,7 @@ class Home extends Component {
   render() {
 
     const { weather } = this.props;
+    //console.log('pronostico extendido', this.props.extended)
 
     if (!Object.keys(weather).length)
       return (
@@ -65,21 +74,21 @@ class Home extends Component {
       );
 
     if (weather.hasOwnProperty('message')) {
-      console.log('ins', this.state.error)
       return (
         <View style={styles.notFound}>
+          <OfflineNotice />
           <Text style={{ fontSize: 170, textAlign: 'center' }}>404!</Text>
           <Text style={{ fontSize: 20, textAlign: 'center' }}>¡Ciudad no encontrada!</Text>
         </View>
       );
     } else {
-
-      console.log('weather out', weather)
       if (Object.keys(weather).length > 1) {
         return (
           <View style={styles.container}>
+            <OfflineNotice />
             <Layout>
               <NavBar cityName={weather.name} cityCountry={weather.sys.country} />
+              <LocationButtons />
               <Weather {...weather} />
             </Layout>
           </View>
@@ -115,6 +124,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => ({
   weather: state.weather,
+  extended: state.extended,
   unit: state.unit
 });
 

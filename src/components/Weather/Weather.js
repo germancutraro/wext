@@ -3,15 +3,23 @@ import { View, Text, StyleSheet } from 'react-native';
 import Extra from './Extra';
 import setIcon from '../../utils/setIcon';
 
+
+import { connect } from 'react-redux';
+
 const Weather = props => {
+
+    let unit = props.unit === "metric" ? "°C" : "°F"; 
+
+    // hacerlo mejor!!
+    let description = props.weather[0].description[0].toUpperCase() + props.weather[0].description.substring(1, props.weather[0].description.length);
 
     return (
         <View style={styles.weatherWrapper}>
             <View style={styles.weatherIcon}>
                { setIcon(props.weather[0].icon) }
             </View>
-            <Text style={styles.description}>{props.weather[0].description}</Text>
-            <Text style={styles.temperature}> {props.main.temp}°</Text>
+            <Text style={styles.description}>{description}</Text>
+            <Text style={styles.temperature}> {props.main.temp}{unit}</Text>
             <Extra 
                 temp={props.main.temp}
                 temp_max={props.main.temp_max}
@@ -30,13 +38,13 @@ const styles = StyleSheet.create({
         flex: 1
     },
     description: {
-        color: '#462535',
+        color: '#000',
         fontSize: 37,
         fontWeight: 'bold',
         marginBottom: 1
     },
     temperature: {
-        color: '#462535',
+        color: '#000',
         fontWeight: 'bold',
         fontSize: 25
     },
@@ -54,4 +62,9 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Weather;
+
+const mapStateToProps = state => ({
+    unit: state.unit
+});
+
+export default connect(mapStateToProps)(Weather);
