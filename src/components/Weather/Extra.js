@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, StyleSheet, Text, TouchableWithoutFeedback } from 'react-native';
+import React, { Component } from 'react';
+import { View, StyleSheet, Text, TouchableWithoutFeedback, Alert } from 'react-native';
 import { LinearGradient } from 'expo';
 import Icon from 'react-native-vector-icons/Feather';
 
@@ -7,44 +7,37 @@ import moment from 'moment';
 import 'moment/locale/es'
 import { connect } from 'react-redux';
 
-/// PASAR A FULLSTATE COMPONENT, GUARDAR LA INFO EN ARRAY Y VALIDAR SI EXISTE, SI ES ASI TRABAJAR EL ARRAY
-const Extra = props => {
-    let unit = props.unit === "metric" ? "°C" : "°F";
+class Extra extends Component {
+
+    render() {
+        let unit = this.props.unit === "metric" ? "°C" : "°F";
          moment.locale("es");
-        let today = moment().format('dddd')
 
-        let days = ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sabado"];
-        let i = days.findIndex(day => day === today);
-
-        setTimeout(() => {
-            if (props.extended)
-                console.log(props.extended[0])
-        }, 5000);
 
     return (
         <View style={styles.information}>
-            <View>
+                <View>
                 <Text style={styles.text}>
                     <Icon name="trending-up" size={16} color="#462535" /> {" "}
                     Temp.Máxima:
-                    {" " + props.temp_max +  unit}
+                    {" " + this.props.temp_max +  unit}
                 </Text>
 
                 <Text style={styles.text}>
                     <Icon name="trending-down" size={16} color="#462535" />
                     {" "}
                     Temp.Mínima:
-                    {" " + props.temp_min + unit}
+                    {" " + this.props.temp_min + unit}
                 </Text>
                 <Text style={styles.text}>
                     <Icon name="droplet" size={16} color="#462535" /> {" "}
                     Humedad:
-                    {" " + props.humidity + "%"}
+                    {" " + this.props.humidity + "%"}
                 </Text>
                 <Text style={styles.text}>
                     <Icon name="chevrons-down" size={16} color="#462535" /> {" "}
                     Presión:
-                    {" " + props.pressure + " mb"}
+                    {" " + this.props.pressure + " mb"}
                 </Text>
             </View>
             <View style={{ alignItems: 'flex-end' }}>
@@ -64,18 +57,19 @@ const Extra = props => {
                     }}
                 >
 
-                    <TouchableWithoutFeedback onPress={() => {
-                        alert([1,2,3].map(el => el))
-                    }}>
+                    
+                    <TouchableWithoutFeedback onPress={() => Alert.alert('Wext', 'En progreso...')}>
                         <View>
                             <Text style={{ color: '#fff', textAlign: 'center', fontSize: 10, fontWeight: 'bold' }}>MORE</Text>
                         </View>
-                    </TouchableWithoutFeedback>
+
+                </TouchableWithoutFeedback>
                 </LinearGradient>
             </View>
 
         </View>
     );
+    }
 };
 
 const styles = StyleSheet.create({
@@ -97,7 +91,6 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = state => ({
-    extended: state.extended,
     unit: state.unit
 });
 

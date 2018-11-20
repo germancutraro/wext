@@ -15,12 +15,12 @@ export const getInformation = (mode, geoData, city, units) => async dispatch => 
                  API = `api.openweathermap.org/data/2.5/forecast?q=Hurlingham&appid=${API_KEY}&units=${units}&lang=es`;     
             try {
                 const res = await axios("https://" + API);
-                //console.log('exteneded', res.data);
                 if (mode !== "extended")  {
                     dispatch({
                         type: GET_INFORMATION,
                         payload: res.data
                     });
+                    resolve(res)
                 } else {
                     dispatch({
                         type: "GET_EXTENDED",

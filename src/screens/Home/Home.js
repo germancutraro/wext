@@ -4,16 +4,18 @@ import {
   StyleSheet,
   View,
   ActivityIndicator,
-  NetInfo
+  Button
 } from "react-native";
 import { connect } from "react-redux";
-import { getInformation } from "../../store/actions/weather";
+import { getInformation, setCity } from "../../store/actions/weather";
 // Components
 import Layout from "../../hoc/Layout/Layout";
 import NavBar from "../../components/NavBar/NavBar";
 import Weather from "../../components/Weather/Weather";
 import OfflineNotice from '../../components/Connection/OfflineNotice';
 import LocationButtons from '../../components/LocationButtons/LocationButtons';
+
+import axios from 'axios';
 
 androidStatusBarColor = "#fff"
 
@@ -23,8 +25,10 @@ class Home extends Component {
     error: false,
     unit: 'metric',
     data: false,
+    gpsName: '',
+    gps: '',
+    upd: 1
   };
-
 
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(position => {
@@ -34,15 +38,14 @@ class Home extends Component {
 
       this.props.getInformation('gps', { latitude, longitude }, this.props.unit)
         .then(msg => {
-          this.setState({ error: false })
+          this.setState({ error: false, gps: this.props.weather.name })
+
           setTimeout(() => {
             this.setState({ data: true })
           }, 5000);
         })
         .catch(err => this.setState({ error: true }));
-    });
-
-    
+    });   
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
@@ -61,11 +64,20 @@ class Home extends Component {
     }
   }
 
+  gpsAgain = () => {
+      this.props.setCity({name: this.state.gps})
+  }
+
+  reload = () => {
+    console.log('reloading...')
+
+}
+
   render() {
 
     const { weather } = this.props;
-    //console.log('pronostico extendido', this.props.extended)
 
+    
     if (!Object.keys(weather).length)
       return (
         <View style={[styles.container, styles.spinner]}>
@@ -88,8 +100,9 @@ class Home extends Component {
             <OfflineNotice />
             <Layout>
               <NavBar cityName={weather.name} cityCountry={weather.sys.country} />
-              <LocationButtons />
+              <LocationButtons gpsAgain={this.gpsAgain} reload={ this.reload } />
               <Weather {...weather} />
+
             </Layout>
           </View>
         );
@@ -130,5 +143,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getInformation }
+  { getInformation, setCity }
 )(Home);
